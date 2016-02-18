@@ -20,10 +20,12 @@ spec:
       containers:
         - name: policyagent
           image: calico/k8s-policy-agent
-          imagePollPolicy: always
+          imagePullPolicy: always
           env:
+          - name: K8S_API
+            value: "<K8S_API>"
           - name: ETCD_AUTHORITY
-            value: "<KUBERNETES_MASTER>:2379"
+            value: "<ETCD>"
           - name: K8S_AUTH_TOKEN
             value: "<TOKEN>"
           resources:
